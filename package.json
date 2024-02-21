@@ -1,7 +1,7 @@
 {
   "name": "hono-ws-manager",
   "license": "MIT",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "A package for easily managing websocket in hono environment",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -17,7 +17,7 @@
   "author": "avinarrezaee",
   "scripts": {
     "build": "tsup src/index.ts --format cjs,esm --dts",
-    "release": "pnpm run build && changeset publish",
+    "release": "pnpm run build && pnpm changeset publish",
     "lint": "tsc"
   },
   "devDependencies": {
