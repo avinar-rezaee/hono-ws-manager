@@ -1,0 +1,34 @@
+{
+  "name": "hono-ws-manager",
+  "license": "MIT",
+  "version": "0.0.1",
+  "description": "A package for easily managing websocket in hono environment",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/avinar-rezaee/hono-ws-manager.git"
+  },
+  "bugs": {
+    "url": "https://github.com/avinar-rezaee/hono-ws-manager/issues"
+  },
+  "homepage": "https://github.com/avinar-rezaee/hono-ws-manager#readme",
+  "author": "avinarrezaee",
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts",
+    "release": "pnpm run build && changeset publish",
+    "lint": "tsc"
+  },
+  "devDependencies": {
+    "@changesets/cli": "^2.26.0",
+    "tsup": "^6.5.0",
+    "typescript": "^4.9.4"
+  },
+  "keywords": [
+    "websocket",
+    "hono",
+    "cloudflare",
+    "cloudflare-worker"
+  ]
+}
