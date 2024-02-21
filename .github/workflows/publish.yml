@@ -1,9 +1,14 @@
 name: Publish
+# on:
+#   workflow_run:
+#     workflows: [CI]
+#     branches: [main]
+#     types: [completed]
+
 on:
-  workflow_run:
-    workflows: [CI]
-    branches: [main]
-    types: [completed]
+  push:
+    branches:
+      - "main"
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -25,7 +30,7 @@ jobs:
           node-version: 16.x
           cache: "pnpm"
 
-      - run: pnpm install --no-frozen-lockfile
+      - run: pnpm install --frozen-lockfile
       - name: Create Release Pull Request or Publish
         id: changesets
         uses: changesets/action@v1
