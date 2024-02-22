@@ -1,27 +1,25 @@
 {
     "compilerOptions": {
-        /* Base Options: */
-        "esModuleInterop": true,
-        "skipLibCheck": true,
-        "target": "es2021",
-        "allowJs": true,
-        "resolveJsonModule": true,
-        "moduleDetection": "force",
-        /* Strictness */
-        "strict": true,
-        "noUncheckedIndexedAccess": true,
-        /* If NOT transpiling with TypeScript: */
-        "moduleResolution": "Node",
-        "module": "es2022",
-        "noEmit": true,
-        /* If your code runs in the DOM: */
+        "target": "es2017",
         "lib": [
-            "es2022",
-            "dom",
+            "es2017",
             "dom.iterable"
         ],
+        "module": "CommonJS",
+        "moduleResolution": "node",
         "types": [
             "@cloudflare/workers-types/2023-07-01"
-        ]
+        ],
+        "resolveJsonModule": true,
+        "allowJs": true,
+        "checkJs": false,
+        "noEmit": true,
+        "isolatedModules": true,
+        "allowSyntheticDefaultImports": true,
+        "forceConsistentCasingInFileNames": true,
+        "strict": true,
+        "skipLibCheck": true,
+        "esModuleInterop": true,
+        "moduleDetection": "force",
     }
 }
