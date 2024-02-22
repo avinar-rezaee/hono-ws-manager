@@ -81,16 +81,15 @@ export default class WS<ServerNameSpacesPaths extends string = string, ListenEve
 
     const webSocketPair = new WebSocketPair();
     const [client, server] = Object.values<WebSocket>(webSocketPair);
-    // if(server){
-    //   server.accept();
 
-    //   const id = uuidV4();
-    //   const socket = new Socket({ server, id, namespace, data: null });
+    server.accept();
 
-    //   // Join the socket to the namespace and apply middleware.
-    //   this.onSocketJoin(socket);
-    //   namespaceMiddlewares.execute(socket, () => callback(socket));
-    // }
+    const id = uuidV4();
+    const socket = new Socket({ server, id, namespace, data: null });
+
+    // Join the socket to the namespace and apply middleware.
+    this.onSocketJoin(socket);
+    namespaceMiddlewares.execute(socket, () => callback(socket));
 
     return new Response(null, {
       status: 101,

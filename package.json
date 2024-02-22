@@ -1,7 +1,7 @@
 {
   "name": "hono-ws-manager",
   "license": "MIT",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "A package for easily managing websocket in hono environment",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
@@ -24,6 +24,7 @@
   },
   "devDependencies": {
     "@changesets/cli": "^2.26.0",
+    "@cloudflare/workers-types": "^4.20240208.0",
     "@hono/node-server": "^1.8.1",
     "@types/uuid": "^9.0.8",
     "tsup": "^6.5.0",
@@ -36,7 +37,6 @@
     "cloudflare-worker"
   ],
   "dependencies": {
-    "@cloudflare/workers-types": "^4.20240208.0",
     "hono": "^4.0.5",
     "uuid": "^9.0.1",
     "wrangler": "^3.28.4"
