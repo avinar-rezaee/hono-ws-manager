@@ -33,4 +33,3 @@ jobs:
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm run lint && pnpm run build
       - name: Create Pull Request
-        uses: peter-evans/create-pull-request@v6
