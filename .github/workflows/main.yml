@@ -1,8 +1,8 @@
-name: PushToMain
+name: OnPushToBranch
 on:
   push:
     branches:
-      - "main"
+      - "**"
 
 jobs:
   build:

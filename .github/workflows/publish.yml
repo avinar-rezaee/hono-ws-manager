@@ -1,8 +1,8 @@
 name: Publish
 on:
   workflow_run:
-    workflows: [PushToMain]
-    branches: [master]
+    workflows: [OnPushToBranch]
+    branches: [main]
     types: [completed]
 
 # on:
