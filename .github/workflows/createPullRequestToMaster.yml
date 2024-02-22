@@ -2,7 +2,7 @@ name: createPullRequestToMaster
 on:
   workflow_run:
     workflows: [OnPushToBranch]
-    branches: [master]
+    branches: ["**", "!master"]
     types: [completed]
 
 # on:
@@ -17,7 +17,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  publish:
+  pull:
     if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
