@@ -8,7 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: pnpm/action-setup@v2
         with:
           version: 7
@@ -19,3 +19,5 @@ jobs:
 
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm run lint && pnpm run build
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v6
