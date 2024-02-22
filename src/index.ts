@@ -1,7 +1,7 @@
 // Imports necessary modules and types from Hono, as well as utility functions.
 import { BlankSchema } from 'hono/types';
 import { v4 as uuidV4 } from "uuid";
-import { Env, Hono, HonoRequest } from 'hono';
+import type { Hono, HonoRequest } from 'hono';
 import NameSpace from './classes/Namespace';
 import { DefaultEventMap, EventsMap, ServerNamespacesPath } from './Types/Types';
 import Socket from './classes/Socket';
@@ -12,7 +12,7 @@ export default class WS<ServerNameSpacesPaths extends string = string, ListenEve
   // Holds a default namespace for WebSocket connections.
   public readonly defaultNamespace: NameSpace<ServerNamespacesPath<ServerNameSpacesPaths>, ListenEvents, EmitEvents, SocketData> = new NameSpace('/ws');
   // Static reference to the Hono app for managing routes and middleware.
-  static honoApp: Hono<Env, BlankSchema, "/">;
+  static honoApp: Hono;
   // Sets for tracking all socket connections and namespaces.
   public readonly Sockets: Set<Map<string, Socket<ListenEvents, EmitEvents, SocketData, ServerNamespacesPath<ServerNameSpacesPaths>, NameSpace<ServerNamespacesPath<ServerNameSpacesPaths>, ListenEvents, EmitEvents, SocketData>>>>;
   public readonly Namespaces: Set<Map<string, NameSpace<ServerNamespacesPath<ServerNameSpacesPaths>, ListenEvents, EmitEvents, SocketData>>>;
@@ -24,7 +24,7 @@ export default class WS<ServerNameSpacesPaths extends string = string, ListenEve
   of: (namespace: ServerNamespacesPath<ServerNameSpacesPaths>) => NameSpace<ServerNamespacesPath<ServerNameSpacesPaths>, ListenEvents, EmitEvents, SocketData>
 
   // Initializes WebSocket functionality with a given Hono app.
-  constructor({ honoApp: honoAppConstructor }: { honoApp: Hono<Env, BlankSchema, "/"> }) {
+  constructor({ honoApp: honoAppConstructor }: { honoApp: Hono }) {
     WS.honoApp = honoAppConstructor;
     this.Sockets = <any>WS.sockets;
     this.Namespaces = <any>WS.namespaces;
