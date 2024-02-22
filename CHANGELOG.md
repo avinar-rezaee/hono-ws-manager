@@ -1,5 +1,11 @@
 # hono-ws-manager
 
+## 0.0.10
+
+### Patch Changes
+
+- first publish
+
 ## 0.0.9
 
 ### Patch Changes
