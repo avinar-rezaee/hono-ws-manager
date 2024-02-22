@@ -1,5 +1,11 @@
 # hono-ws-manager
 
+## 0.0.12
+
+### Patch Changes
+
+- test for deno
+
 ## 0.0.11
 
 ### Patch Changes
