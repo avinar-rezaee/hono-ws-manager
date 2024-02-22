@@ -1,5 +1,4 @@
 // Imports necessary modules and types from Hono, as well as utility functions.
-import { BlankSchema } from 'hono/types';
 import { v4 as uuidV4 } from "uuid";
 import type { Hono, HonoRequest } from 'hono';
 import NameSpace from './classes/Namespace';
