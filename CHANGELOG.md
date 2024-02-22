@@ -1,5 +1,11 @@
 # hono-ws-manager
 
+## 0.0.8
+
+### Patch Changes
+
+- package second test
+
 ## 0.0.7
 
 ### Patch Changes
