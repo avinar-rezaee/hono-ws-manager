@@ -22,6 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - uses: actions/labeler@v4
       - uses: pnpm/action-setup@v2
         with:
           version: 7
@@ -33,3 +34,6 @@ jobs:
       - run: pnpm install --no-frozen-lockfile
       - run: pnpm run lint && pnpm run build
       - name: Create Pull Request
+        run: gh pr create -B master -H main --title 'Merge main into master' --body 'Created by Github action'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
