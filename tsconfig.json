@@ -1,12 +1,12 @@
 {
     "compilerOptions": {
-        "target": "ES2021",
+        "target": "ESNext",
         "lib": [
-            "ES2021",
+            "ESNext",
             "dom.iterable"
         ],
-        "module": "CommonJS",
-        "moduleResolution": "node",
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
         "types": [
             "@cloudflare/workers-types/2023-07-01"
         ],
