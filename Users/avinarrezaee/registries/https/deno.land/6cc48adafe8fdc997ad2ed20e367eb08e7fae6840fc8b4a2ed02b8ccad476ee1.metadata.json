@@ -1,0 +1,10 @@
+{
+  "headers": {
+    "cache-control": "max-age=604800, immutable"
+  },
+  "url": "https://deno.land/.well-known/deno-import-intellisense.json",
+  "now": {
+    "secs_since_epoch": 1708589791,
+    "nanos_since_epoch": 361179000
+  }
+}
