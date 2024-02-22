@@ -1,15 +1,16 @@
 name: createPullRequestToMaster
-# on:
-#   workflow_run:
-#     workflows: [OnPushToBranch]
-#     branches: [main]
-#     types: [completed]
-
 on:
-  push:
+  workflow_run:
+    workflows: [OnPushToBranch]
     branches:
-      - "!master"
       - "**"
+    types: [completed]
+
+# on:
+#   push:
+#     branches:
+#       - "!master"
+#       - "**"
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
