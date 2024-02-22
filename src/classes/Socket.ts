@@ -3,7 +3,7 @@ import { DefaultEventMap, EventNames, EventParams, EventsMap, ServerNamespacesPa
 import NameSpace from "./Namespace";
 
 // The Socket class represents an individual WebSocket connection.
-export default class Socket<ListenEvents extends DefaultEventMap = DefaultEventMap, EmitEvents extends EventsMap = EventsMap, SocketData extends any = any, NamespacePath extends ServerNamespacesPath = ServerNamespacesPath, Namespace extends NameSpace<ServerNamespacesPath<NamespacePath | string>, ListenEvents, EmitEvents, SocketData> = NameSpace> {
+export default class Socket<ListenEvents extends DefaultEventMap = DefaultEventMap, EmitEvents extends EventsMap = EventsMap, SocketData extends any = any, NamespacePath extends ServerNamespacesPath = ServerNamespacesPath, Namespace extends NameSpace<ServerNamespacesPath<NamespacePath | string>, ListenEvents, EmitEvents, SocketData> = NameSpace<ServerNamespacesPath<NamespacePath | string>, ListenEvents, EmitEvents, SocketData>> {
     readonly WsServer: WebSocket; // The WebSocket server instance.
     readonly id: string; // Unique identifier for the socket.
     readonly namespace: Namespace; // The namespace this socket belongs to.
