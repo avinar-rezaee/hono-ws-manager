@@ -1,14 +1,15 @@
 name: createPullRequestToMaster
-on:
-  workflow_run:
-    workflows: [OnPushToBranch]
-    branches: [main]
-    types: [completed]
-
 # on:
-#   push:
-#     branches:
-#       - "master"
+#   workflow_run:
+#     workflows: [OnPushToBranch]
+#     branches: [main]
+#     types: [completed]
+
+on:
+  push:
+    branches:
+      - "!master"
+      - "**"
 
 concurrency: ${{ github.workflow }}-${{ github.ref }}
 
@@ -18,7 +19,7 @@ permissions:
 
 jobs:
   pull:
-    # if: ${{ github.event.workflow_run.conclusion == 'success' }}
+    if: ${{ github.event.workflow_run.conclusion == 'success' }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
