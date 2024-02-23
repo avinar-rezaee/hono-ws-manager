@@ -6,6 +6,7 @@ import { DefaultEventMap, EventsMap, ServerNamespacesPath } from './Types/Types'
 import Socket from './classes/Socket';
 import NamespaceMiddleware from './classes/Middleware';
 
+
 // The WS class encapsulates WebSocket functionality, including namespace and socket management.
 export default class WS<ServerNameSpacesPaths extends string = string, ListenEvents extends EventsMap = DefaultEventMap, EmitEvents extends EventsMap = EventsMap, SocketData = any> {
   // Holds a default namespace for WebSocket connections.

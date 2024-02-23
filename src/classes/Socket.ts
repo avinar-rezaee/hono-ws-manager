@@ -1,4 +1,4 @@
-import WS from "..";
+import WS from "../index";
 import { DefaultEventMap, EventNames, EventParams, EventsMap, ServerNamespacesPath } from "../Types/Types";
 import NameSpace from "./Namespace";
 
