@@ -9,3 +9,10 @@ pnpm-lock.yaml
 .npmrc
 CHANGELOG.md
 tests
+*.log
+.cache
+*bak
+.history
+.temp/**
+.vscode
+Users

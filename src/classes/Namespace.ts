@@ -1,4 +1,4 @@
-import WS from "..";
+import WS from "../index";
 import { DefaultEventMap, EventsMap, ServerNamespacesPath, WsHandler } from "../Types/Types";
 import NamespaceMiddleware from "./Middleware";
 import Socket from "./Socket";
