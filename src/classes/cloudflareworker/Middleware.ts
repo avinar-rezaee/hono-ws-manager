@@ -1,4 +1,4 @@
-import { DefaultEventMap, EventsMap, ServerNamespacesPath } from "../Types/Types";
+import { DefaultEventMap, EventsMap, ServerNamespacesPath } from "../../Types/Types";
 import NameSpace from "./Namespace";
 import Socket from "./Socket";
 

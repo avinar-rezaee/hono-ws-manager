@@ -1,5 +1,5 @@
-import WS from "../index";
-import { DefaultEventMap, EventsMap, ServerNamespacesPath, WsHandler } from "../Types/Types";
+import WScloudflare from "./index";
+import { DefaultEventMap, EventsMap, ServerNamespacesPath, WsHandler } from "../../Types/Types";
 import NamespaceMiddleware from "./Middleware";
 import Socket from "./Socket";
 
@@ -13,7 +13,7 @@ export default class NameSpace<Path extends ServerNamespacesPath = ServerNamespa
     constructor(path: ServerNamespacesPath<Path>) {
         this.path = path;
         // Register the new namespace with the WS class.
-        WS.onNewNamespace(this);
+        WScloudflare.onNewNamespace(this);
     }
 
     // Middleware stack for the namespace, allowing pre-connection logic to be applied.
@@ -28,10 +28,17 @@ export default class NameSpace<Path extends ServerNamespacesPath = ServerNamespa
     public on: (handler: WsHandler, callback: (socket: Socket<ListenEvents, EmitEvents, SocketData, ServerNamespacesPath<Path>, NameSpace<ServerNamespacesPath<Path>, ListenEvents, EmitEvents, SocketData>>) => void) => void = (handler: WsHandler, callback: (socket: Socket<ListenEvents, EmitEvents, SocketData, ServerNamespacesPath<Path>, NameSpace<ServerNamespacesPath<Path>, ListenEvents, EmitEvents, SocketData>>) => void) => {
         if (handler == 'connection') {
             // Setup connection handling for the namespace.
-            WS.honoApp.get(this.path, c => WS.setupWsConnection(c.req, callback, { namespace: this }, this.namespaceMiddlewares));
+            WScloudflare.honoApp.get(this.path, c => WScloudflare.setupWsConnectionCloudflareWorker(c.req, callback, { namespace: this }, this.namespaceMiddlewares));
         }
         return;
     };
+    // public onBun: (handler: WsHandler, callback: (socket: Socket<ListenEvents, EmitEvents, SocketData, ServerNamespacesPath<Path>, NameSpace<ServerNamespacesPath<Path>, ListenEvents, EmitEvents, SocketData>>) => void) => void = (handler: WsHandler, callback: (socket: Socket<ListenEvents, EmitEvents, SocketData, ServerNamespacesPath<Path>, NameSpace<ServerNamespacesPath<Path>, ListenEvents, EmitEvents, SocketData>>) => void) => {
+    //     if (handler == 'connection') {
+    //         // Setup connection handling for the namespace.
+    //         WS.honoApp.get(this.path, c => WSbun.setupWsConnectionBun(c.req, callback, { namespace: this }, this.namespaceMiddlewares));
+    //     }
+    //     return;
+    // };
 
     // Retrieves a socket by its ID from the namespace.
     getSocket(socketID: string) {
