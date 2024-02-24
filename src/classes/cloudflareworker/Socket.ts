@@ -1,5 +1,5 @@
-import WS from "../index";
-import { DefaultEventMap, EventNames, EventParams, EventsMap, ServerNamespacesPath } from "../Types/Types";
+import WScloudflare from "./index";
+import { DefaultEventMap, EventNames, EventParams, EventsMap, ServerNamespacesPath } from "../../Types/Types";
 import NameSpace from "./Namespace";
 
 // The Socket class represents an individual WebSocket connection.
@@ -36,20 +36,20 @@ export default class Socket<ListenEvents extends DefaultEventMap = DefaultEventM
 
     // Method to emit a message event to the client through this socket.
     emit<Event extends EventNames<EmitEvents>>(handler: Event, ...data: EventParams<EmitEvents, Event>) {
-        this.WsServer.send(JSON.stringify({ MessageEvent: handler, data }));
+        this.WsServer.send(JSON.stringify({ MessageEvent: handler, data: data.length == 1 ? data[0] : data }));
     }
 
     // Disconnects the socket, optionally passing an error if the disconnection was due to an error.
-    disconnect(e?: Error) {
-        this.WsServer.close(1000, e?.message); // Use WebSocket standard code 1000 for normal closure.
+    disconnect(e?: Error, code: number = 1000) {
+        this.WsServer.close(code, e?.message); // Use WebSocket standard code 1000 for normal closure.
 
         // Remove the socket from the global socket set and its namespace's socket set.
-        for (const item of WS.sockets) {
+        for (const item of WScloudflare.sockets) {
             if (item.get(this.id)) {
-                WS.sockets.delete(item);
+                WScloudflare.sockets.delete(item);
             }
         }
-        const socketNamespace = WS.getNamespace(this.namespace.path);
+        const socketNamespace = WScloudflare.getNamespace(this.namespace.path);
         if (socketNamespace) {
             for (const item of socketNamespace.sockets) {
                 if (item.get(this.id)) {
