@@ -1,4 +1,4 @@
-import { DefaultEventMap, EventsMap, ServerNamespacesPath } from "../../Types/Types";
+import { DefaultEventMap, EventsMap, ServerNamespacesPath } from "../Types/Types";
 import NameSpace from "./Namespace";
 import Socket from "./Socket";
 
@@ -32,7 +32,5 @@ export default class NamespaceMiddleware<ListenEvents extends EventsMap = Defaul
         };
         dispatch(middleware.next().value);
         // Start executing from the first middleware.
-
-
     }
 }
